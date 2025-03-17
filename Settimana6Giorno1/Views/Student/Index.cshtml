@@ -1,0 +1,42 @@
+﻿@{
+	ViewData["Title"] = "Student list";
+}
+
+<h1 class="text-center">Students List</h1>
+
+<div class="container" id="tableContainer"></div>
+
+@section Scripts {
+	<script>
+
+		document.addEventListener("DOMContentLoaded", () => {
+			let tableContainer = document.getElementById('tableContainer');
+
+			 if(tableContainer){
+				fetch("student/get-all", {
+					method: "GET"
+				})
+				.then(response => {
+					if(response.ok){
+						return response.text();
+					}
+				})
+				.then(response => {
+
+					tableContainer.innerHTML = response
+
+					  new DataTable('#studentTable', {
+						ordering: true,
+						columnDefs: [
+							{
+								orderable: true
+							}
+						]
+					});
+				   })
+			}
+		});
+
+
+	</script>
+}
