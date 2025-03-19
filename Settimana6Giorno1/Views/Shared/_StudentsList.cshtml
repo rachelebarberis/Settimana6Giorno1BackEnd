@@ -7,7 +7,7 @@
         <th>Nome</th>
         <th>Congome</th>
         <th>Email</th>
-        <th>Details</th>
+        <th>Action</th>
         </thead>
         <tbody>
             @foreach (var student in Model.Students)
@@ -18,7 +18,8 @@
                     <td>@student.Email</td>
               
                     <td>
-                        <button onclick="showDetailsModal('@student.Id')">Details</button>
+                        <button class="btn btn-sm btn-success" onclick="showEditModal('@student.Id')">Edit</button>
+                        <button class="btn btn-sm btn-danger" onclick="showDeleteModal('@student.Id')">Delete</button>
                     </td>
                 </tr>
             }

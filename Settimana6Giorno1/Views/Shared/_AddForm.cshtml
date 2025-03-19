@@ -1,0 +1,23 @@
+﻿@model AddStudentViewModel
+
+<form id="addForm">
+    
+    <div class="mb-3">
+        <label for="nome" class="form-label">Nome</label>
+        <input id="nome" type="text" class="form-control" name="Nome" asp-for="Nome" />
+    </div>
+    <div class="mb-3">
+        <label for="cognome" class="form-label">cognome</label>
+        <input id="cognome" type="text" class="form-control" name="Cognome" asp-for="Cognome" />
+    </div>
+    <div class="mb-3">
+        <label for="DataDiNascita" class="form-label">DataDiNascita</label>
+        <input id="DataDiNascita" type="datetime" class="form-control" name="DataDiNascita" asp-for="DataDiNascita" />
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input id="email" type="email" class="form-control" name="Email" asp-for="Email" />
+    </div>
+    <button class="btn btn-success" type="button" onclick="sendAddForm()">Save</button>
+</form>
+
