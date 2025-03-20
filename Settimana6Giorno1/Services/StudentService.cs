@@ -21,7 +21,7 @@ namespace Settimana6Giorno1.Services
 
             try
             {
-                studentsList.Students = await _context.Students.ToListAsync();
+                studentsList.Students = await _context.Students.Include(s =>s.User).ToListAsync();
             }
             catch
             {

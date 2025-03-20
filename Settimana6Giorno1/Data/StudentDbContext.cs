@@ -32,6 +32,11 @@ namespace Settimana6Giorno1.Data
                 .HasOne(ur => ur.Role)
                 .WithMany(u => u.ApplicationUserRole)
                 .HasForeignKey(ur => ur.RoleId);
+
+            modelBuilder.Entity<Student>()
+                .HasOne(ur => ur.User)
+                .WithMany(u => u.Students)
+                .HasForeignKey(ur => ur.UserId);
             modelBuilder.Entity<Student>().HasData(
                 new Student
                 {

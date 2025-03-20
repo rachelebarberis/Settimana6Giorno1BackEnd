@@ -15,5 +15,8 @@ namespace Settimana6Giorno1.Models
         public DateOnly? BirthDate { get; set; }
 
         public ICollection<ApplicationUserRole> ApplicationUserRole { get; set; }
+
+        public ICollection<Student> Students { get; set; }
     }
+
 }

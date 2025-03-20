@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Settimana6Giorno1.Services;
 using Settimana6Giorno1.ViewModels;
 using System;
@@ -6,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Settimana6Giorno1.Controllers
 {
+    [Authorize(Roles =  "Admin")]
     public class StudentController : Controller
     {
         private readonly StudentService _studentService;

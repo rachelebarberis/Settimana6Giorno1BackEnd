@@ -23,5 +23,14 @@ namespace Settimana6Giorno1.Models
         [Required]
         [EmailAddress]
         public required string Email { get; set; }
+
+        public DateOnly CreatedAd {  get; set; }
+
+
+        public string? UserId { get; set; }
+
+        [ForeignKey("UserId")]
+
+        public ApplicationUser User { get; set; }
     }
 }
