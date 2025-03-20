@@ -1,14 +1,37 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Settimana6Giorno1.Models;
 
 namespace Settimana6Giorno1.Data
 {
-    public class StudentDbContext : DbContext
+    public class StudentDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string,
+        IdentityUserClaim<string>, ApplicationUserRole, IdentityUserLogin<string>,
+        IdentityRoleClaim<string>, IdentityUserToken<string>>
     {
         public StudentDbContext(DbContextOptions<StudentDbContext> options) : base(options) { }
+
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
+        public DbSet<ApplicationRole> ApplicationRoles { get; set; }
+
+
+        public DbSet<ApplicationUserRole> ApplicationUserRoles { get; set; }
         public DbSet<Student> Students { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<ApplicationUserRole>()
+                .HasOne(ur => ur.User)
+                .WithMany(u => u.ApplicationUserRole)
+                .HasForeignKey(ur => ur.UserId);
+
+            modelBuilder.Entity<ApplicationUserRole>()
+                .HasOne(ur => ur.Role)
+                .WithMany(u => u.ApplicationUserRole)
+                .HasForeignKey(ur => ur.RoleId);
             modelBuilder.Entity<Student>().HasData(
                 new Student
                 {

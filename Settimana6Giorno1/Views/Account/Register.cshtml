@@ -1,0 +1,11 @@
+﻿@model RegisterViewModel
+
+<form asp-controller="Account" asp-action="Register">
+    <input placeholder="Nome" asp-for="@Model.FirstName" />
+    <input placeholder="Cognome" asp-for="@Model.LastName" />
+    <input placeholder="Email" asp-for="@Model.Email" />
+    <input palceholder="Data di Nascita"type="date" asp-for="@Model.BirthDate" />
+    <input placeholder="password" type="password" asp-for="@Model.Password" />
+    <input placeholder="conferma password" type="password" asp-for="@Model.ConfirmPassword" />
+    <button>Login</button>
+</form>
